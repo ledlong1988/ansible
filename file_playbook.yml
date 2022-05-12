@@ -5,37 +5,12 @@
   tasks:
 
   - name: Update packages for Ubuntu-based distros
-    apt:
-      update_cache: yes
-    when: ansible_distribution == "Ubuntu"
-
-  - name: Update packages for CentOS-based distros
-    yum:
-      update_cache: yes
-    when: ansible_distribution == "CentOS"
-
-- hosts: file_servers
-  become: true
-  tasks:
-
-  - name: Install samba for file servers
     package:
-      name: samba
-      state: latest
+      update_cache: yes
 
-- hosts: db_servers
-  become: true
-  tasks:
-
-  - name: Install mariadb for Ubuntu-based database servers
-    apt:
-      name: mariadb
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: Install mariadb for CentOS-based database servers
-    yum:
-      name: mariadb-server
-      state: latest
-    when: ansible_distribution == "CentOS"
-
+  - name: Copy a file to home directory
+    copy:
+      src: test.txt
+      dest: /home/ledlong/
+      owner: ledlong
+      mode: 0644
