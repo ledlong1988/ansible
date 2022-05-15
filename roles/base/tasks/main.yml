@@ -1,0 +1,8 @@
+#- name: update all servers and workstations
+#  package:
+#    update_cache = yes  
+
+- name: Create a new user for all servers and workstations
+  user:
+    name: administrator
+    root: yes

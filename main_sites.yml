@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: Update packages
+    package:
+      update_cache: yes
+
+- hosts: workstations
+  become: true
+  roles:
+    - workstations

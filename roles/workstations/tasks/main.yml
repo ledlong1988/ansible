@@ -1,0 +1,17 @@
+- name: Create a new user named administrator
+  user:
+    name: administrator
+    groups: root
+    home: /home/administrator
+
+- name: Create a new user named client
+  user:
+    name: client
+    groups: root
+    create_home: no
+    comment: "This is for client user"
+
+- name: Install unzip
+  package:
+    name: unzip
+    state: latest
